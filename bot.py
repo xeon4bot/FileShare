@@ -151,7 +151,10 @@ class Bot(Client):
         await webserver.TCPSite(client, bind_address, PORT_CODE).start()
 
         # Check for interrupted indexing tasks
-        await restart_index(self)
+        try:
+            await restart_index(self)
+        except Exception as e:
+            logging.error(f"Error during auto-restart of indexer: {e}")
 
         # Schedule restart
         asyncio.create_task(self.schedule_restart(RESTART_INTERVAL))
@@ -240,5 +243,22 @@ def parse_interval(interval: str) -> int:
 
 
 if __name__ == "__main__":
-    app = Bot()
-    app.run()
+    from pyrogram.errors import Unauthorized
+    try:
+        app = Bot()
+        app.run()
+    except Unauthorized as e:
+        print("\n" + "="*80)
+        print("❌ CRITICAL ERROR: TELEGRAM SESSION UNAUTHORIZED / DUPLICATED")
+        print(f"Error Details: {e}")
+        print("="*80)
+        print("This usually happens because:")
+        print(f"  1. The session file '{SESSION}.session' is already active in another running process")
+        print("     (e.g., on a VPS, Render, Koyeb, Docker container, or another terminal/computer).")
+        print("  2. Telegram invalidated the session.")
+        print("\n👉 HOW TO FIX THIS:")
+        print("  1. Make sure no other instances of the bot are currently running.")
+        print(f"  2. Delete the session file '{SESSION}.session' from this directory.")
+        print("  3. Restart the bot. It will automatically generate a new session and authorization key.")
+        print("="*80 + "\n")
+        sys.exit(1)

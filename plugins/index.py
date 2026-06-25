@@ -1,7 +1,7 @@
 import os, pytz, re, datetime, logging, asyncio, math, time
 import pymongo
 from pyrogram import Client, filters, enums
-from pyrogram.errors import FloodWait
+from pyrogram.errors import FloodWait, Unauthorized
 from pyrogram.errors.exceptions.bad_request_400 import ChannelInvalid, ChatAdminRequired, UsernameInvalid, UsernameNotModified
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
@@ -186,6 +186,7 @@ async def index_files_to_db_single(lst_msg_id, chat, msg, bot, db_num):
     remaining_index = 0
     elapsed_time_str = "0s"
     
+    is_unauthorized = False
     async with lock:
         try:
             current = temp.CURRENT
@@ -266,22 +267,32 @@ async def index_files_to_db_single(lst_msg_id, chat, msg, bot, db_num):
                 # Yield to event loop between batches so bot stays responsive
                 await asyncio.sleep(0)
 
+        except Unauthorized as e:
+            logger.error(f"Unauthorized error during indexing (single): {e}")
+            is_unauthorized = True
         except Exception as e:
             logger.exception(e)
-            await msg.edit_text(f'<b>🚫 Error:</b> {e}')
+            try:
+                await msg.edit_text(f'<b>🚫 Error:</b> {e}')
+            except Exception as edit_err:
+                logger.error(f"Failed to edit message with error text in index_files_to_db_single: {edit_err}")
         finally:
-            status = "❌ Cancelled" if temp.CANCEL else "✅ Completed"
-            tz = pytz.timezone('Asia/Kolkata')
-            ttime = datetime.datetime.now(tz).strftime("%I:%M:%S %p - %d %b, %Y")
-            await msg.edit_text(
-                f"<b>{status}!!</b>\n\n"
-                f"<b>├ ▸ Last Updated: <i>{ttime}</i></b>\n"
-                f"<b>╰ ▸ Time Taken: </b>{elapsed_time_str}\n\n"
-                f"<b>╭ ▸ Fetched:</b> <code>{current}</code>\n"
-                f"<b>├ ▸ Saved:</b> <code>{total_files}</code>\n"
-                f"<b>├ ▸ Duplicate:</b> <code>{duplicate}</code>\n"
-                f"<b>╰ ▸ Non/Errors:</b> <code>{no_media + errors}</code>\n"
-            )
+            if not is_unauthorized:
+                status = "❌ Cancelled" if temp.CANCEL else "✅ Completed"
+                tz = pytz.timezone('Asia/Kolkata')
+                ttime = datetime.datetime.now(tz).strftime("%I:%M:%S %p - %d %b, %Y")
+                try:
+                    await msg.edit_text(
+                        f"<b>{status}!!</b>\n\n"
+                        f"<b>├ ▸ Last Updated: <i>{ttime}</i></b>\n"
+                        f"<b>╰ ▸ Time Taken: </b>{elapsed_time_str}\n\n"
+                        f"<b>╭ ▸ Fetched:</b> <code>{current}</code>\n"
+                        f"<b>├ ▸ Saved:</b> <code>{total_files}</code>\n"
+                        f"<b>├ ▸ Duplicate:</b> <code>{duplicate}</code>\n"
+                        f"<b>╰ ▸ Non/Errors:</b> <code>{no_media + errors}</code>\n"
+                    )
+                except Exception as edit_err:
+                    logger.error(f"Failed to edit message in finally block of index_files_to_db_single: {edit_err}")
 
 
 async def index_files_to_db_all(lst_msg_id, chat, msg, bot):
@@ -301,6 +312,7 @@ async def index_files_to_db_all(lst_msg_id, chat, msg, bot):
     remaining_index = 0
     elapsed_time_str = "0s"
     
+    is_unauthorized = False
     async with lock:
         try:
             current = temp.CURRENT
@@ -389,21 +401,31 @@ async def index_files_to_db_all(lst_msg_id, chat, msg, bot):
 
                 # Yield to event loop between batches so bot stays responsive
                 await asyncio.sleep(0)
+        except Unauthorized as e:
+            logger.error(f"Unauthorized error during indexing (all): {e}")
+            is_unauthorized = True
         except Exception as e:
             logger.exception(e)
-            await msg.edit_text(f'<b>🚫 Error:</b> {e}')
+            try:
+                await msg.edit_text(f'<b>🚫 Error:</b> {e}')
+            except Exception as edit_err:
+                logger.error(f"Failed to edit message with error text in index_files_to_db_all: {edit_err}")
         finally:
-            status = "❌ Cancelled" if temp.CANCEL else "✅ Completed"
-            tz = pytz.timezone('Asia/Kolkata')
-            ttime = datetime.datetime.now(tz).strftime("%I:%M:%S %p - %d %b, %Y")
-            await msg.edit_text(
-                f"<b>{status}!!</b>\n\n"
-                f"<b>├ ▸ Last Updated: <i>{ttime}</i></b>\n"
-                f"<b>╰ ▸ Time Taken: </b>{elapsed_time_str}\n\n"
-                f"<b>╭ ▸ Fetched:</b> <code>{current}</code>\n"
-                f"<b>├ ▸ Saved:</b> <code>{total_files}</code>\n"
-                f"<b>├ ▸ Duplicate:</b> <code>{duplicate}</code>\n"
-                f"<b>╰ ▸ Non/Errors:</b> <code>{no_media + errors}</code>\n"
-            )
+            if not is_unauthorized:
+                status = "❌ Cancelled" if temp.CANCEL else "✅ Completed"
+                tz = pytz.timezone('Asia/Kolkata')
+                ttime = datetime.datetime.now(tz).strftime("%I:%M:%S %p - %d %b, %Y")
+                try:
+                    await msg.edit_text(
+                        f"<b>{status}!!</b>\n\n"
+                        f"<b>├ ▸ Last Updated: <i>{ttime}</i></b>\n"
+                        f"<b>╰ ▸ Time Taken: </b>{elapsed_time_str}\n\n"
+                        f"<b>╭ ▸ Fetched:</b> <code>{current}</code>\n"
+                        f"<b>├ ▸ Saved:</b> <code>{total_files}</code>\n"
+                        f"<b>├ ▸ Duplicate:</b> <code>{duplicate}</code>\n"
+                        f"<b>╰ ▸ Non/Errors:</b> <code>{no_media + errors}</code>\n"
+                    )
+                except Exception as edit_err:
+                    logger.error(f"Failed to edit message in finally block of index_files_to_db_all: {edit_err}")
             if not temp.CANCEL:
                 incol.delete_one({"_id": "index_progress"})
