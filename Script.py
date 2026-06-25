@@ -15,7 +15,7 @@ class script(object):
 
 ‣ ᴍʏ ɴᴀᴍᴇ : <a href=https://t.me/{}>Click Here</a>
 ‣ ᴍʏ ʙᴇꜱᴛ ꜰʀɪᴇɴᴅ : <a href='tg://settings'>ᴛʜɪꜱ ᴘᴇʀꜱᴏɴ</a>
-‣ ᴅᴇᴠᴇʟᴏᴘᴇʀ : <a href="https://t.me/im_goutham_josh">ᴏᴡɴᴇʀ</a>
+‣ ᴅᴇᴠᴇʟᴏᴘᴇʀ : <a href="https://t.me/XeonModz">ᴏᴡɴᴇʀ</a>
 ‣ ʟɪʙʀᴀʀʏ : <a href='https://docs.pyrogram.org/'>ᴘʏʀᴏɢʀᴀᴍ</a>
 ‣ ʟᴀɴɢᴜᴀɢᴇ : <a href='https://www.python.org/download/releases/3.0/'>ᴘʏᴛʜᴏɴ 3</a>
 ‣ ᴅᴀᴛᴀʙᴀꜱᴇ : <a href='https://www.mongodb.com/'>5 × ᴍᴏɴɢᴏ ᴅʙ</a>
@@ -27,7 +27,7 @@ class script(object):
 ᴛʜɪꜱ ʙᴏᴛ ɪꜱ ꜰʀᴇᴇ ᴛᴏ ᴜꜱᴇ 🎉
 5ᴅʙ ꜰᴇᴀᴛᴜʀᴇ — 5× ꜱᴛᴏʀᴀɢᴇ, ꜰᴀꜱᴛᴇʀ ɪɴᴅᴇxɪɴɢ, ᴘᴀʀᴀʟʟᴇʟ ꜱᴇᴀʀᴄʜ ⚡
 
-ꜱᴏᴜʀᴄᴇ ᴄᴏᴅᴇ : <a href="https://github.com/xeon4bot/FileShare">𝘾𝙤𝙙𝙚 📌</a>"""
+ꜱᴏᴜʀᴄᴇ ᴄᴏᴅᴇ : <a href="https://github.com/">𝘾𝙤𝙙𝙚 📌</a>"""
     
     MANUELFILTER_TXT = """ʜᴇʟᴘ: <b>ꜰɪʟᴛᴇʀꜱ</b>
 - ꜰɪʟᴛᴇʀ ɪꜱ ᴀ ꜰᴇᴀᴛᴜʀᴇ ᴡᴇʀᴇ ᴜꜱᴇʀꜱ ᴄᴀɴ ꜱᴇᴛ ᴀᴜᴛᴏᴍᴀᴛᴇᴅ ʀᴇᴘʟɪᴇꜱ ꜰᴏʀ ᴀ ᴘᴀʀᴛɪᴄᴜʟᴀʀ ᴋᴇʏᴡᴏʀᴅ ᴀɴᴅ ɪ ᴡɪʟʟ ʀᴇꜱᴘᴏɴᴅ ᴡʜᴇɴᴇᴠᴇʀ ᴀ ᴋᴇʏᴡᴏʀᴅ ɪꜱ ꜰᴏᴜɴᴅ ɪɴ ᴛʜᴇ ᴍᴇꜱꜱᴀɢᴇ
@@ -48,7 +48,7 @@ Cᴏᴍᴍᴀɴᴅs Aɴᴅ Usᴀɢᴇ:
 2. ᴛʜɪꜱ ʙᴏᴛ ꜱᴜᴘᴘᴏʀᴛꜱ ʙᴜᴛᴛᴏɴꜱ ᴡɪᴛʜ ᴀɴʏ ᴛᴇʟᴇɢʀᴀᴍ ᴍᴇᴅɪᴀ ᴛʏᴘᴇ.
 3. ʙᴜᴛᴛᴏɴꜱ ꜱʜᴏᴜʟᴅ ʙᴇ ᴘʀᴏᴘᴇʀʟʏ ᴘᴀʀꜱᴇᴅ ᴀꜱ ᴍᴀʀᴋᴅᴏᴡɴ ꜰᴏʀᴍᴀᴛ
 <b>ᴜʀʟ ʙᴜᴛᴛᴏɴꜱ:</b>
-<code>[Button Text](buttonurl:https://t.me/vjupdates2/3)</code>
+<code>[Button Text](buttonurl:https://t.me/SorryVro)</code>
 <b>ᴀʟᴇʀᴛ ʙᴜᴛᴛᴏɴꜱ:</b>
 <code>[Button Text](buttonalert:ᴛʜɪꜱ ɪꜱ ᴀɴ ᴀʟᴇʀᴛ ᴍᴇꜱꜱᴀɢᴇ)</code>"""
 
