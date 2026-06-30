@@ -112,7 +112,7 @@ Most filter bots use a single MongoDB database, which hits the **512 MB free-tie
 <summary><b>🖥️ Deploy on VPS</b></summary>
 
 ```bash
-git clone https://github.com/YourRepo/5DB
+git clone https://github.com/xeon4bot/FileShare
 cd 5DB
 pip3 install -U -r requirements.txt
 # Edit info.py or set environment variables
@@ -124,7 +124,7 @@ python3 bot.py
 <summary><b>🐳 Deploy with Docker</b></summary>
 
 ```bash
-git clone https://github.com/YourRepo/5DB
+git clone https://github.com/xeon4bot/FileShare
 cd 5DB
 # Fill in your variables in docker-compose.yml
 docker-compose up -d
@@ -134,7 +134,7 @@ docker-compose up -d
 <details>
 <summary><b>☁️ Deploy to Koyeb</b></summary>
 
-[![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?type=git&repository=github.com/YourRepo/5DB&branch=main&name=5DB)
+[![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?type=git&repository=https://github.com/xeon4bot/FileShare)
 
 Set all required environment variables in the Koyeb dashboard after clicking Deploy.
 </details>
@@ -207,10 +207,10 @@ When an admin sends a channel link to the bot, they are presented with these opt
 
 ## 🙏 Credits
 
-- [Pyrogram](https://github.com/pyrogram/pyrogram) — Telegram MTProto library by Dan
-- [Mahesh0253](https://github.com/Mahesh0253/Media-Search-bot) — Original Media Search Bot
-- [TroJanzHEX](https://github.com/trojanzhex) — Unlimited Filter Bot & AutoFilterBot
-- [GouthamSER](https://github.com/GouthamSER) — 2DB base this project evolved from
+- [Pyrogram](https://github.com/xeon4bot/FileShare/) — Telegram MTProto library by Dan
+- [XeonModz](https://github.com/xeon4bot/FileShare) — Original Media Search Bot
+- [XeonModz](https://github.com/xeon4bot/FileShare) — Unlimited Filter Bot & AutoFilterBot
+- [XeonModz](https://github.com/xeon4bot/FileShare) — 2DB base this project evolved from
 - All contributors and the open-source community ❤️
 
 ---

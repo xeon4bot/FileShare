@@ -53,7 +53,7 @@ async def is_subscribed(bot, query=None, userid=None):
                 user = await bot.get_chat_member(id, query.from_user.id)
             else:
                 chat = await bot.get_chat(id)
-                user = await bot.get_chat_member(AUTH_CHANNEL, int(userid))
+                user = await bot.get_chat_member(id, int(userid))
         except UserNotParticipant:
             invite_links.append(chat.invite_link)
         except Exception as e:
